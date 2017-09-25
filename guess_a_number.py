@@ -50,6 +50,8 @@ def show_result(guess, rand):
 def play_again():
     while True:
         decision = input("Would you like to play again? (y/n) ")
+        decision= decision.lower()
+        
         print("")
         if decision == 'y' or decision == 'yes':
             return True

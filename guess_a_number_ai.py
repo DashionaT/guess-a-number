@@ -2,7 +2,7 @@ import random
 
 # config
 low = 1
-high = 1000
+high = 100
 
 
 # helper functions
@@ -12,20 +12,23 @@ def show_start_screen():
     print("*************************")
 
 def show_credits():
-    pass
+    print("This awesome game was created by Dai.")
     
 def get_guess(current_low, current_high):
     """
     Return a truncated average of current low and high.
     """
-    pass
+    guess = (current_low + current_high) // 2
+    return guess
 
 def pick_number():
     """
     Ask the player to think of a number between low and high.
     Then  wait until the player presses enter.
     """
-    pass
+    print("Think of a number from " + str(low) + " to " +
+    str(high) +". I will get a total of 7 tries. Press Enter when you are ready.")
+    input()
 
 def check_guess(guess):
     """
@@ -35,6 +38,14 @@ def check_guess(guess):
              0 if the guess was correct
              1 if the guess was too high
     """
+    print(" Was " + str(guess) + " too high, too low, or correct?")
+    answer = input()
+    if answer == 'too low' or answer == 'to low':
+        return -1
+    if answer == 'too high' or answer == 'to high':
+        return 1
+    if answer == 'correct':
+        return 0
 
 def show_result():
     """

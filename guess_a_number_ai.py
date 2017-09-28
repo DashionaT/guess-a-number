@@ -1,3 +1,5 @@
+#Guess A Number A.I
+#Dashiona T
 import random
 
 # config
@@ -27,7 +29,7 @@ def pick_number():
     Then  wait until the player presses enter.
     """
     print("Think of a number from " + str(low) + " to " +
-    str(high) +". I will get a total of 7 tries. Press Enter when you are ready.")
+    str(high) +" and I will try to guess it and I will get a total of 7 tries. Press Enter when you are ready.")
     input()
 
 def check_guess(guess):
@@ -51,13 +53,15 @@ def show_result():
     """
     Says the result of the game. (The computer might always win.)
     """
-    pass
+    print("I win!!")
+   
+
 
 def play_again():
     while True:
         decision = input("Would you like to play again? (y/n) ")
 
-        if decision == 'y' or decision == 'yes':
+        if decision == 'yes' or decision == 'y':
             return True
         elif decision == 'n' or decision == 'no':
             return False
@@ -77,12 +81,12 @@ def play():
 
         if check == -1:
             # adjust current_low
-            pass
+           current_low = guess
         elif check == 1:
             # adjust current_high
-            pass
+            current_high = guess
 
-    show_result(guess, rand)
+    show_result()
 
 
 # Game starts running here

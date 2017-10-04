@@ -45,13 +45,13 @@ def get_guess(current_low, current_high):
     guess = (current_low + current_high) // 2
     return guess
 
-def pick_number(low, high,limit):
+def pick_number(low, high, limit):
     """
     Ask the player to think of a number between low and high.
     Then  wait until the player presses enter.
     """
     print("Think of a number from " + str(low) + " to " +
-    str(high) +" and I will try to guess it and I will get a total of " + limit + " tries. Press Enter when you are ready.")
+    str(high) +" and I will try to guess it and I will get a total of " + str(limit) + " tries. Press Enter when you are ready.")
     input()
 
 def check_guess(guess):
@@ -62,17 +62,20 @@ def check_guess(guess):
              0 if the guess was correct
              1 if the guess was too high
     """
-    print(" Was " + str(guess) + " too high, too low, or correct?")
-    answer = input()
-    answer= answer.lower()
+    while True:
+        print(" Was " + str(guess) + " too high, too low, or correct?")
+        answer = input()
+        answer= answer.lower()
     
-    if answer == 'too low' or answer == 'to low':
-        return -1
-    if answer == 'too high' or answer == 'to high':
-        return 1
-    if answer == 'correct':
-        return 0
-
+        if answer == 'too low' or answer == 'to low':
+            return -1
+        elif answer == 'too high' or answer == 'to high':
+            return 1
+        elif answer == 'correct':
+            return 0
+        else:
+            print("I don't understand. Please enter 'too low', too high', or 'correct'.")
+                  
 def show_result():
     """
     Says the result of the game. (The computer might always win.)
@@ -105,7 +108,7 @@ def play():
     check = -1
     limit = math.ceil(math.log(current_high - current_low + 1, 2))
 
-    pick_number(current_low, current_high)
+    pick_number(current_low, current_high, limit)
     
     while check != 0:
         guess = get_guess(current_low, current_high)
